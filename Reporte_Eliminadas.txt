@@ -1,0 +1,1 @@
+Multa{codigo='M006', placa='XYZ987', cedula='400500600', nombre='María Gómez', tipo='Transitar en contravía', fecha=Sat Aug 02 00:00:00 COT 2025, monto=800000.0, estado='Pagada'}

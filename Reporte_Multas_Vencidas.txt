@@ -1,0 +1,4 @@
+Multa{codigo='M001', placa='ABC123', cedula='100200300', nombre='Juan Pérez', tipo='Exceso de velocidad', fecha=Sun Jun 01 00:00:00 COT 2025, monto=650000.0, estado='Pendiente'}
+Multa{codigo='M004', placa='XYZ987', cedula='400500600', nombre='María Gómez', tipo='Exceso de velocidad', fecha=Tue May 20 00:00:00 COT 2025, monto=650000.0, estado='Pendiente'}
+Multa{codigo='M007', placa='JKL456', cedula='700800900', nombre='Carlos Ruiz', tipo='Conducir sin licencia', fecha=Wed Jun 18 00:00:00 COT 2025, monto=1300000.0, estado='Pendiente'}
+Multa{codigo='M014', placa='TUV654', cedula='555444333', nombre='Laura Martínez', tipo='No usar casco o chaleco', fecha=Wed Jun 11 00:00:00 COT 2025, monto=650000.0, estado='Pendiente'}

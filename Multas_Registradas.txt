@@ -1,0 +1,2 @@
+M45773;QER-124;123456;yo;Mal parqueo;2025-09-16;600000.0;Pendiente
+M53788;ACV-123;1234567;yo;Estacionar en sitios no permitidos;2025-09-17;400000.0;Pendiente

@@ -1,0 +1,30 @@
+M001;ABC123;100200300;Juan Pérez;Exceso de velocidad;2025-06-01;650000.0;Pendiente
+M002;ABC123;100200300;Juan Pérez;Mal parqueo;2025-07-10;400000.0;Pendiente
+M003;ABC123;100200300;Juan Pérez;Semáforo en rojo;2025-08-05;1000000.0;Pendiente
+M004;XYZ987;400500600;María Gómez;Exceso de velocidad;2025-05-20;650000.0;Pendiente
+M005;XYZ987;400500600;María Gómez;No usar cinturón;2025-07-15;300000.0;Pendiente
+M007;JKL456;700800900;Carlos Ruiz;Conducir sin licencia;2025-06-18;1300000.0;Pendiente
+M008;JKL456;700800900;Carlos Ruiz;Semáforo en rojo;2025-07-21;1000000.0;Pendiente
+M009;LMN789;111222333;Ana Torres;Exceso de velocidad;2025-06-30;650000.0;Pendiente
+M010;LMN789;111222333;Ana Torres;Mal parqueo;2025-08-12;400000.0;Pendiente
+M011;LMN789;111222333;Ana Torres;No respetar señales;2025-09-01;350000.0;Pendiente
+M012;QWE321;999888777;Pedro Sánchez;Exceso de velocidad;2025-07-05;650000.0;Pendiente
+M013;QWE321;999888777;Pedro Sánchez;Conducir sin licencia;2025-08-09;1300000.0;Pendiente
+M014;TUV654;555444333;Laura Martínez;No usar casco o chaleco;2025-06-11;650000.0;Pendiente
+M015;TUV654;555444333;Laura Martínez;Semáforo en rojo;2025-07-29;1000000.0;Pendiente
+M016;TUV654;555444333;Laura Martínez;Transitar en contravía;2025-08-15;800000.0;Pendiente
+M017;RTY741;222111999;Sofía Herrera;Exceso de velocidad;2025-07-14;650000.0;Pendiente
+M018;RTY741;222111999;Sofía Herrera;Estacionar en sitio no permitido;2025-08-20;400000.0;Pendiente
+M019;RTY741;222111999;Sofía Herrera;No usar cinturón;2025-09-05;300000.0;Pendiente
+M020;POI852;888777666;Andrés López;Semáforo en rojo;2025-07-22;1000000.0;Pendiente
+M021;POI852;888777666;Andrés López;Mal parqueo;2025-08-25;400000.0;Pendiente
+M022;POI852;888777666;Andrés López;Exceso de velocidad;2025-09-02;650000.0;Pendiente
+M023;BNM963;123789456;Valentina Castro;Conducir sin licencia;2025-06-27;1300000.0;Pendiente
+M024;BNM963;123789456;Valentina Castro;Semáforo en rojo;2025-08-18;1000000.0;Pendiente
+M025;BNM963;123789456;Valentina Castro;No respetar señales;2025-09-03;350000.0;Pendiente
+M026;GHJ159;321654987;Daniel Ortiz;No usar casco o chaleco;2025-07-30;650000.0;Pendiente
+M027;GHJ159;321654987;Daniel Ortiz;Estacionar en sitio no permitido;2025-08-28;400000.0;Pendiente
+M028;GHJ159;321654987;Daniel Ortiz;Exceso de velocidad;2025-09-06;650000.0;Pendiente
+M029;CVB753;852963741;Paula Restrepo;Semáforo en rojo;2025-08-10;1000000.0;Pendiente
+M030;CVB753;852963741;Paula Restrepo;Transitar en contravía;2025-09-08;800000.0;Pendiente
+M031;EFG343;1234567;Natalia;No tener SOAT vigente;2025-09-17;1300000.0;Pendiente

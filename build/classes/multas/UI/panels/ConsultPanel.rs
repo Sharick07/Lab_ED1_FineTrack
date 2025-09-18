@@ -1,0 +1,1 @@
+multas.ui.panels.ConsultPanel
