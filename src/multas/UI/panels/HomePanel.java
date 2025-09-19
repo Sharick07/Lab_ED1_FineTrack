@@ -34,14 +34,18 @@ public class HomePanel extends JPanel {
 
         // Mensaje de bienvenida
         JTextArea message = new JTextArea(
-            "FineTrack es un sistema diseñado para la gestión eficiente de multas de tránsito.\n\n" +
-            "Con esta aplicación podrás:\n" +
-            " - Registrar nuevas multas con todos sus detalles.\n" +
-            " - Consultar información de conductores y vehículos.\n" +
-            " - Registrar pagos y mantener el historial actualizado.\n" +
-            " - Identificar multas vencidas y generar reportes.\n" +
-            " - Eliminar registros de multas pagadas.\n\n" +
-            ""
+             "FineTrack es un sistema diseñado por NexGen System para la gestión eficiente de multas de tránsito.\n" +
+             "Su propósito es ofrecer una herramienta práctica, organizada y confiable que permita a los usuarios\n" +
+             "tener control total sobre las infracciones registradas.\n\n" +
+             "Con esta aplicación podrás:\n" +
+             " ✅ Registrar nuevas multas con todos sus detalles.\n" +
+             " ✅ Consultar información de conductores y vehículos de forma rápida.\n" +
+             " ✅ Registrar pagos y mantener el historial siempre actualizado.\n" +
+             " ✅ Gestionar pagos en cuotas: hasta 3 por multa.\n" +
+             " ✅ Identificar fácilmente las multas vencidas y generar reportes organizados.\n" +
+             " ✅ Eliminar registros de multas pagadas, guardando automáticamente un reporte histórico.\n\n" +
+             "FineTrack organiza toda la información en archivos, asegurando transparencia y facilidad" +
+             "de acceso a los datos.\n\n"        
         );
         message.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         message.setForeground(new Color(60, 60, 60));
