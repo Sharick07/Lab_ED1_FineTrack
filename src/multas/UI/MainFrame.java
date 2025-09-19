@@ -5,6 +5,11 @@ import javax.swing.*;
 import multas.ui.panels.*;
 import multas.utils.UIUtils;
 
+//  Esta clase es la ventana principal de la aplicación (marco base).
+//  Contiene la estructura de menús y paneles,
+//  y gestiona la navegación entre ellos.
+// 
+
 public class MainFrame extends JFrame {
     private JPanel sideMenu;
     private JPanel contentPanel;

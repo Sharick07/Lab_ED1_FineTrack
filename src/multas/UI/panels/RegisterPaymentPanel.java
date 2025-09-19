@@ -9,6 +9,14 @@ import multas.models.Multa;
 import multas.utils.FileManager;
 import multas.utils.UIUtils;
 
+
+//  Panel de registro de pagos.
+//  Permite seleccionar una multa pendiente e ingresar uno o más pagos,
+//  validando la regla de máximo tres cuotas
+//  y actualizando el archivo de multas.
+// 
+
+
 public class RegisterPaymentPanel extends JPanel {
     private JTextField txtPlate;
     private JComboBox<String> comboMultas;
@@ -49,7 +57,7 @@ public class RegisterPaymentPanel extends JPanel {
         y++;
 
         // --- Monto ---
-        gbc.gridx=0; gbc.gridy=y; add(new JLabel("Monto pagado:"), gbc);
+        gbc.gridx=0; gbc.gridy=y; add(new JLabel("Monto a pagar:"), gbc);
         java.text.NumberFormat nf = java.text.NumberFormat.getNumberInstance();
         javax.swing.text.NumberFormatter nfF = new javax.swing.text.NumberFormatter(nf);
         nfF.setAllowsInvalid(false);

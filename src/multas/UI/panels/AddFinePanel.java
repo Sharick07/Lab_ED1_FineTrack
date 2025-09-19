@@ -11,6 +11,12 @@ import multas.utils.UIUtils;
 import multas.models.Multa;
 import multas.utils.FileManager;
 
+
+//  Esta clase es el panel de registro de multas.
+//  Permite al usuario ingresar una nueva multa con validaciones
+//  y guardarla en el archivo de Multas_Registradas.
+// 
+
 public class AddFinePanel extends JPanel { 
     //Atributos de la clase AddFinePanel
     private JTextField txtCode, txtPlate, txtCedula, txtName, txtEstado;
@@ -154,7 +160,7 @@ public class AddFinePanel extends JPanel {
             }
         });
 
-        // set default monto for initial selection
+        
         String current = (String) cbType.getSelectedItem();
         if (current != null && typePriceMap.get(current) != null) {
             txtMonto.setValue(typePriceMap.get(current));
@@ -222,9 +228,9 @@ public class AddFinePanel extends JPanel {
             return;
         }
 
-        // 
+        // Aquí llamamos al metodo saved de FileManager
         Multa m = new Multa(code, placa, ced, nombre, tipo, fecha, monto, estado);
-        boolean saved = FileManager.saveMulta(m); // stub: implementarlo
+        boolean saved = FileManager.saveMulta(m);
         if (saved) {
             JOptionPane.showMessageDialog(this, "Multa guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             clearForm();

@@ -10,6 +10,11 @@ import multas.utils.FileManager;
 import multas.utils.UIUtils;
 import java.util.List;
 
+
+//Esta clase permite mostrar las multas vencidas
+//(Aquellas que tienen mas de 90 dias sin ser pagadas)
+// Las obntiene del archivo Multas_Registradas.
+
 public class ExpiredPanel extends JPanel {
     private JTable table;
     private DefaultTableModel model;
@@ -31,12 +36,9 @@ public class ExpiredPanel extends JPanel {
 
         JButton btnLoad = new JButton("Cargar vencidas");
         btnLoad.addActionListener(e -> loadExpired());
-        JButton btnExport = new JButton("Exportar reporte");
-        btnExport.addActionListener(e -> exportReport());
 
         JPanel bottom = new JPanel();
         bottom.add(btnLoad);
-        bottom.add(btnExport);
         add(bottom, BorderLayout.SOUTH);
     }
 
@@ -56,16 +58,6 @@ public class ExpiredPanel extends JPanel {
                     });
                 }
             }
-        }
-    }
-
-    private void exportReport() {
-        try {
-            FileManager.exportExpiredReport();
-            JOptionPane.showMessageDialog(this, "Reporte de vencidas exportado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error exportando reporte.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
         }
     }
 }

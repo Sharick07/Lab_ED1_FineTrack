@@ -7,6 +7,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+
+
+//
+//  Esta clase se usa para la interfaz gráfica.
+//  Define colores, fuentes y estilos comunes usados en los paneles.
+//
+// 
+
 public class UIUtils {
     // Colors
     public static final Color APP_BG = Color.decode("#F5F7FA");
@@ -23,7 +31,7 @@ public class UIUtils {
     public static final Font MENU_FONT = new Font("Segoe UI", Font.BOLD, 14);
     public static final Font LABEL_FONT = new Font("Segoe UI", Font.PLAIN, 14);
 
-    // Icon loader utility
+    // carga de iconos
     public static ImageIcon getScaledIcon(String resourcePath, int w, int h) {
         URL url = UIUtils.class.getResource(resourcePath);
         if (url == null) {
@@ -35,7 +43,6 @@ public class UIUtils {
         return new ImageIcon(img);
     }
 
-    // hover effect factory
     public static MouseAdapter createHoverEffect(JComponent comp, Color base, Color hover) {
         return new MouseAdapter() {
             @Override

@@ -5,6 +5,10 @@ import java.awt.*;
 import multas.utils.UIUtils;
 import multas.utils.UIUtils;
 
+
+// Esta clase es el panel de inicio de la aplicación.
+// Muestra información general, menús y mensajes de bienvenida al usuario.
+//
 public class HomePanel extends JPanel {
 
     public HomePanel() {

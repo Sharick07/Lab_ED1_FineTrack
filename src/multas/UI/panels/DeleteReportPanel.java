@@ -9,6 +9,10 @@ import multas.models.Multa;
 import multas.utils.FileManager;
 import multas.utils.UIUtils;
 
+//Es es la clase del panel de multas eliminadas
+//que permite ver mediante una tabla los registros
+// del archivo de Reporte_eliminadas.
+
 public class DeleteReportPanel extends JPanel {
     private JTable table;
     private DefaultTableModel model;

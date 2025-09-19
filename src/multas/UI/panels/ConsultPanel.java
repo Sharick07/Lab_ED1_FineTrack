@@ -9,6 +9,12 @@ import multas.utils.FileManager;
 import multas.utils.UIUtils;
 import java.util.List;
 
+
+// Esta clase es el panel de consulta de multas.
+// Permite buscar multas por placa o cédula
+// y muestra los resultados en una tabla.
+ 
+
 public class ConsultPanel extends JPanel {
     private JTable table;
     private DefaultTableModel model;
@@ -55,7 +61,7 @@ public class ConsultPanel extends JPanel {
         }
 
    private void doSearch() {
-        String q = searchField.getText().trim();
+        String q = searchField.getText().trim().toUpperCase();;
         if (q.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese un valor para buscar.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -68,11 +74,17 @@ public class ConsultPanel extends JPanel {
         String criterio = (String) comboCriterio.getSelectedItem();
 
         if ("Placa".equals(criterio)) {
+            //valida el formato de placa
+            if (!q.matches("^[A-Z0-9-]{5,8}$")) {
+                JOptionPane.showMessageDialog(this, "El valor ingresado no corresponde a una placa válida (5 a 8 caracteres alfanuméricos).", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             resultados = FileManager.buscarPorPlaca(q);
+        
         } else {
-            // Validación: la cédula debe ser numérica
-            if (!q.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "La cédula debe ser numérica.", "Error", JOptionPane.ERROR_MESSAGE);
+            // Validar formato de cédula
+            if (!q.matches("^[0-9]{6,10}$")) {
+                JOptionPane.showMessageDialog(this, "La cédula debe tener entre 6 y 10 dígitos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             resultados = FileManager.buscarPorCedula(q);

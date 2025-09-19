@@ -8,6 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
 
+
+//  Esta clase es utilizada para manejo de archivos txt.
+//  Gestiona la lectura, escritura, actualización y eliminación de registros
+//  de multas y pagos en los archivos.
+// 
+
+
+
 public class FileManager {
     private static final String FILE_MULTAS = "src/archivos/Multas_Registradas.txt";
     private static final String FILE_PAGOS = "src/archivos/Pagos_Multas.txt";
@@ -101,7 +109,6 @@ public class FileManager {
                         count++;
                     }
                 }
-                // si el archivo tiene líneas antiguas (placa;fecha;monto) las ignoramos aquí
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,148 +117,19 @@ public class FileManager {
     }
 
 
-    
-//    public static boolean registerPayment(String code, String placa, Date fecha, double monto) {
-//        try {
-//             // 1) Contar pagos previos
-//            int pagosPrevios = contarPagos(code);
-//
-//            // 2) Cargar multas para ver saldo actual
-//            List<Multa> multas = loadMultas();
-//            Multa target = null;
-//            for (Multa m : multas) {
-//                if (m.getCodigo().equals(code)) {
-//                    target = m;
-//                    break;
-//                }
-//            }
-//            if (target == null) return false;
-//
-//            double saldoPendiente = target.getMonto();
-//
-//            // 3) Validar la regla de máximo 3 pagos
-//            if (pagosPrevios >= 3) {
-//                JOptionPane.showMessageDialog(null,
-//                    "Esta multa ya alcanzó el máximo de 3 pagos permitidos.",
-//                    "Límite de pagos", JOptionPane.ERROR_MESSAGE);
-//                return false;
-//            }
-//
-//            if (pagosPrevios == 2) {
-//                // Último pago: debe ser igual al saldo restante
-//                if (Math.abs(monto - saldoPendiente) > 0.01) {
-//                    JOptionPane.showMessageDialog(null,
-//                        "El tercer pago debe ser exactamente por el saldo restante: " + saldoPendiente,
-//                        "Pago inválido", JOptionPane.WARNING_MESSAGE);
-//                    return false;
-//                }
-//            } else {
-//                // Primer o segundo pago: no puede ser mayor al saldo
-//                if (monto > saldoPendiente) {
-//                    JOptionPane.showMessageDialog(null,
-//                        "El monto ingresado excede el saldo pendiente: " + saldoPendiente,
-//                        "Pago inválido", JOptionPane.WARNING_MESSAGE);
-//                    return false;
-//                }
-//            }
-//
-//            // 1) Guardar pago en FILE_PAGOS con formato: codigo;placa;fecha;monto
-//            try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PAGOS, true))) {
-//                String pagoLine = String.join(";", code == null ? "" : code, placa, sdf.format(fecha), String.valueOf(monto));
-//                bw.write(pagoLine);
-//                bw.newLine();
-//                bw.flush();
-//            }
-//
-//            // 2) Leer Multas_Registradas y actualizar la multa correspondiente
-//            File file = new File(FILE_MULTAS);
-//            if (!file.exists()) {
-//                System.out.println("FileManager.registerPayment: no existe FILE_MULTAS -> " + FILE_MULTAS);
-//                return false;
-//            }
-//
-//            List<String> updated = new ArrayList<>();
-//            boolean found = false;
-//
-//            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-//                String line;
-//                while ((line = br.readLine()) != null) {
-//                    String[] parts = line.split(";");
-//                    if (parts.length < 8) {
-//                        updated.add(line);
-//                        continue;
-//                    }
-//
-//                    String codFile = parts[0];
-//                    String placaFile = parts[1];
-//
-//                    // Si se pasó código usarlo; si código vacío usar primera multa pendiente de la placa
-//                    boolean match = false;
-//                    if (code != null && !code.isEmpty()) {
-//                        match = codFile.equals(code) && placaFile.equalsIgnoreCase(placa);
-//                    } else {
-//                        // sin código -> aplicar al primer registro pendiente de esa placa
-//                        match = placaFile.equalsIgnoreCase(placa) && parts[7].equalsIgnoreCase("Pendiente") && !found;
-//                    }
-//
-//                    if (match) {
-//                        double montoActual;
-//                        try {
-//                            montoActual = Double.parseDouble(parts[6]);
-//                        } catch (NumberFormatException ex) {
-//                            montoActual = 0.0;
-//                        }
-//
-//                        double nuevoMonto = montoActual - monto;
-//
-//                        if (nuevoMonto <= 0.0) {
-//                            parts[6] = "0";
-//                            parts[7] = "Pagada";
-//                        } else {
-//                            // formatear con sin notación científica
-//                            parts[6] = String.format(Locale.US, "%.2f", nuevoMonto);
-//                            parts[7] = "Pendiente";
-//                        }
-//
-//                        String newLine = String.join(";", parts);
-//                        updated.add(newLine);
-//                        found = true;
-//                        System.out.println("FileManager: Multa actualizada -> " + newLine);
-//                    } else {
-//                        updated.add(line);
-//                    }
-//                }
-//            }
-//
-//            // 3) Reescribir Multas_Registradas.txt con los cambios
-//            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, false))) {
-//                for (String l : updated) {
-//                    bw.write(l);
-//                    bw.newLine();
-//                }
-//                bw.flush();
-//            }
-//
-//
-//            return true;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+ 
     public static boolean registerPayment(String code, String placa, Date fecha, double monto) {
         try {
-            // --- 0) sanity trim
             if (code == null) code = "";
             code = code.trim();
             placa = placa == null ? "" : placa.trim();
 
-            // 1) contar pagos previos (por CÓDIGO)
+            // contar pagos previos
             int pagosPrevios = contarPagos(code);
             
 
 
-            // 2) cargar MULTA objetivo desde archivo
+            // cargar MULTA desde archivo
             List<Multa> multas = loadMultas();
             Multa target = null;
             for (Multa m : multas) {
@@ -267,7 +145,7 @@ public class FileManager {
 
             double saldoPendiente = target.getMonto();
 
-            // 3) Validaciones de cuotas (usar BigDecimal para exactitud si quieres)
+            // Validaciones de cuotas 
             if (pagosPrevios >= 3) {
                 JOptionPane.showMessageDialog(null, "Esta multa ya alcanzó el máximo de 3 pagos permitidos.", "Límite de pagos", JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -287,7 +165,7 @@ public class FileManager {
                 }
             }
 
-            // 4) guardar pago — Asegúrate que EL FORMATO es: codigo;placa;fecha;monto
+            // guardar pago 
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PAGOS, true))) {
                 String pagoLine = String.join(";", code, placa, sdf.format(fecha), String.format(Locale.US, "%.2f", monto));
                 bw.write(pagoLine);
@@ -295,7 +173,7 @@ public class FileManager {
                 bw.flush();
             }
 
-            // 5) actualizar Multas_Registradas (por el mismo código)
+            // actualizar Multas_Registradas
             File file = new File(FILE_MULTAS);
             if (!file.exists()) {
                 System.out.println("FileManager.registerPayment: no existe FILE_MULTAS -> " + FILE_MULTAS);
@@ -357,10 +235,7 @@ public class FileManager {
             return false;
         }
     }
-
-
-
-
+    // Buscar por placa
     public static List<Multa> buscarPorPlaca(String placa) {
         List<Multa> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_MULTAS))) {
@@ -377,7 +252,7 @@ public class FileManager {
         return list;
     }
 
-    // 🔹 Buscar por cédula
+    // Buscar por cédula
     public static List<Multa> buscarPorCedula(String cedula) {
         List<Multa> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_MULTAS))) {
@@ -394,7 +269,7 @@ public class FileManager {
         return list;
     }
 
-    // 🔹 Convertir línea en objeto Multa
+    //Convertir línea en objeto Multa
     private static Multa parseMulta(String[] parts) {
         try {
             String codigo = parts[0];
@@ -413,71 +288,7 @@ public class FileManager {
             return null;
         }
     }
-//    public static void updateEstados() {
-//        try {
-//            // 1) Cargar pagos acumulados por código de multa
-//            Map<String, Double> pagosPorCodigo = new HashMap<>();
-//            File pagosFile = new File(FILE_PAGOS);
-//            if (pagosFile.exists()) {
-//                try (BufferedReader br = new BufferedReader(new FileReader(pagosFile))) {
-//                    String line;
-//                    while ((line = br.readLine()) != null) {
-//                        String[] p = line.split(";");
-//                        if (p.length < 4) continue;
-//                        String codigoPago = p[0];
-//                        String montoStr = p[3];
-//                        double montoPago = 0.0;
-//                        try {
-//                            montoPago = Double.parseDouble(montoStr);
-//                        } catch (NumberFormatException ex) {
-//                            montoPago = 0.0;
-//                        }
-//                        if (codigoPago != null && !codigoPago.isEmpty()) {
-//                            pagosPorCodigo.put(codigoPago, pagosPorCodigo.getOrDefault(codigoPago, 0.0) + montoPago);
-//                        }
-//                    }
-//                }
-//            }
-//
-//            // 2) Cargar multas y aplicar pagos por código
-//            List<Multa> multas = loadMultas();
-//            for (Multa m : multas) {
-//                String codigo = m.getCodigo();
-//                if (pagosPorCodigo.containsKey(codigo)) {
-//                    double totalPagado = pagosPorCodigo.get(codigo);
-//                    if (totalPagado >= m.getMonto()) {
-//                        m.setMonto(0.0);
-//                        m.setEstado("Pagada");
-//                    } else {
-//                        m.setMonto(m.getMonto() - totalPagado);
-//                        m.setEstado("Pendiente");
-//                    }
-//                }
-//            }
-//
-//            // 3) Reescribir Multas_Registradas con los nuevos estados
-//            try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_MULTAS, false))) {
-//                for (Multa m : multas) {
-//                    String line = String.join(";",
-//                            m.getCodigo(),
-//                            m.getPlaca(),
-//                            m.getCedula(),
-//                            m.getNombre(),
-//                            m.getTipo(),
-//                            sdf.format(m.getFecha()),
-//                            String.format(Locale.US, "%.2f", m.getMonto()),
-//                            m.getEstado()
-//                    );
-//                    bw.write(line);
-//                    bw.newLine();
-//                }
-//                bw.flush();
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    
     public static void updateEstados() {
         try {
             // leer pagos y acumular por CÓDIGO de multa
@@ -539,7 +350,7 @@ public class FileManager {
     }
 
 
-    
+    //Aquí se crea un archivo para guardar las multas vencidas
     public static void exportExpiredReport() throws IOException {
         List<Multa> multas = loadMultas();
         Date today = new Date();
@@ -588,7 +399,7 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-            // 3. Quitar también del archivo de Pagos_Multas.txt
+        
         try {
             File pagosFile = new File(FILE_PAGOS);
             if (pagosFile.exists()) {

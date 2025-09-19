@@ -10,6 +10,11 @@ import multas.utils.FileManager;
 import multas.utils.UIUtils;
 import java.util.List;
 
+//  Esta clase es el panel de eliminación de multas pagadas.
+//  Muestra las multas ya pagadas y permite eliminarlas del archivo principal,
+//  registrándolas en el archivo de Reporte_Eliminadas.
+// 
+
 public class DeletePanel extends JPanel {
     private JTable table;
     private DefaultTableModel model;
@@ -53,23 +58,7 @@ public class DeletePanel extends JPanel {
             }
         }
     }
-
-//    private void deleteSelected() {
-//        int[] rows = table.getSelectedRows();
-//        if (rows.length == 0) {
-//            JOptionPane.showMessageDialog(this, "Seleccione al menos una multa para eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//
-//        List<String> codigosEliminar = new ArrayList<>();
-//        for (int r : rows) {
-//            codigosEliminar.add((String) model.getValueAt(r, 0));
-//        }
-//
-//        FileManager.deletePagadas(codigosEliminar);
-//        JOptionPane.showMessageDialog(this, "Multas eliminadas. Se generó un reporte.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-//        loadPagadas();
-//    }
+    //Eliminar las multas seleccionadas
     private void deleteSelected() {
         int[] rows = table.getSelectedRows();
         if (rows.length == 0) {

@@ -2,6 +2,12 @@ package multas.models;
 
 import java.util.Date;
 
+//
+//  Clase modelo que representa una multa.
+//  Contiene atributos como código, placa, cédula, nombre, tipo, fecha,
+//  monto y estado, además de sus getters y setters.
+
+
 public class Multa {
     private String codigo;
     private String placa;
