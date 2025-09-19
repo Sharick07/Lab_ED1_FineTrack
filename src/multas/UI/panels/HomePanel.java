@@ -30,14 +30,14 @@ public class HomePanel extends JPanel {
 
         // Mensaje de bienvenida
         JTextArea message = new JTextArea(
-            "FineTract es un sistema diseñado para la gestión eficiente de multas de tránsito.\n\n" +
+            "FineTrack es un sistema diseñado para la gestión eficiente de multas de tránsito.\n\n" +
             "Con esta aplicación podrás:\n" +
             " - Registrar nuevas multas con todos sus detalles.\n" +
             " - Consultar información de conductores y vehículos.\n" +
             " - Registrar pagos y mantener el historial actualizado.\n" +
             " - Identificar multas vencidas y generar reportes.\n" +
             " - Eliminar registros de multas pagadas.\n\n" +
-            "Todo esto utilizando estructuras de archivos secuenciales e indexados, "
+            ""
         );
         message.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         message.setForeground(new Color(60, 60, 60));

@@ -28,7 +28,6 @@ public class AddFinePanel extends JPanel {
         header.setFont(UIUtils.TITLE_FONT);
         add(header, BorderLayout.NORTH);
         
-        // Init map of types -> prices
         initTypePriceMap();
 
         JPanel form = new JPanel(new GridBagLayout());
@@ -144,7 +143,7 @@ public class AddFinePanel extends JPanel {
 
         add(form, BorderLayout.CENTER);
         
-                // Cuando se selecciona un tipo, autocompletar monto
+        // Cuando se selecciona un tipo, se autocompleta el monto
         cbType.addActionListener(e -> {
             String sel = (String) cbType.getSelectedItem();
             Double price = typePriceMap.get(sel);
@@ -176,10 +175,10 @@ public class AddFinePanel extends JPanel {
         typePriceMap.put("Conducir bajo la influencia de alcohol o sustancias", 2000000.0);
     }  
 
-    private String generateCode() {
-        // Ejemplo simple. Cambiar por lógica real si se desea
-        return "M" + System.currentTimeMillis() % 100000;
-    }
+//    private String generateCode() {
+//        // Ejemplo simple. Cambiar por lógica real si se desea
+//        return "M" + System.currentTimeMillis() % 100000;
+//    }
     
     //Limpiar todos los campos
     private void clearForm() {
@@ -192,6 +191,7 @@ public class AddFinePanel extends JPanel {
     }
 
     private void saveMulta() {
+      
         // Validaciones
         String code = txtCode.getText().trim();
         String placa = txtPlate.getText().trim().toUpperCase();
@@ -222,7 +222,7 @@ public class AddFinePanel extends JPanel {
             return;
         }
 
-        // TODO: llamar a FileManager para guardar la multa en archivo
+        // 
         Multa m = new Multa(code, placa, ced, nombre, tipo, fecha, monto, estado);
         boolean saved = FileManager.saveMulta(m); // stub: implementarlo
         if (saved) {

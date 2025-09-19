@@ -1,1 +1,3 @@
 Multa{codigo='M006', placa='XYZ987', cedula='400500600', nombre='María Gómez', tipo='Transitar en contravía', fecha=Sat Aug 02 00:00:00 COT 2025, monto=800000.0, estado='Pagada'}
+Multa{codigo='M004', placa='XYZ987', cedula='400500600', nombre='María Gómez', tipo='Exceso de velocidad', fecha=Tue May 20 00:00:00 COT 2025, monto=0.0, estado='Pagada'}
+M001;ABC123;100200300;Juan Pérez;Exceso de velocidad;2025-06-01;0.0;Pagada

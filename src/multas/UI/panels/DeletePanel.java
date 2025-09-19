@@ -54,6 +54,22 @@ public class DeletePanel extends JPanel {
         }
     }
 
+//    private void deleteSelected() {
+//        int[] rows = table.getSelectedRows();
+//        if (rows.length == 0) {
+//            JOptionPane.showMessageDialog(this, "Seleccione al menos una multa para eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//
+//        List<String> codigosEliminar = new ArrayList<>();
+//        for (int r : rows) {
+//            codigosEliminar.add((String) model.getValueAt(r, 0));
+//        }
+//
+//        FileManager.deletePagadas(codigosEliminar);
+//        JOptionPane.showMessageDialog(this, "Multas eliminadas. Se generó un reporte.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+//        loadPagadas();
+//    }
     private void deleteSelected() {
         int[] rows = table.getSelectedRows();
         if (rows.length == 0) {
@@ -66,9 +82,20 @@ public class DeletePanel extends JPanel {
             codigosEliminar.add((String) model.getValueAt(r, 0));
         }
 
-        FileManager.deletePagadas(codigosEliminar);
-        JOptionPane.showMessageDialog(this, "Multas eliminadas. Se generó un reporte.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        loadPagadas();
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro que desea eliminar " + codigosEliminar.size() + " multa(s)?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            FileManager.deletePagadas(codigosEliminar); // 🔹 este ya reescribe Multas_Registradas y genera el reporte
+            JOptionPane.showMessageDialog(this, "Multas eliminadas y registradas en reporte.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            loadPagadas(); // refrescar tabla
+        }
     }
+
     
 }

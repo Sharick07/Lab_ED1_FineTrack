@@ -70,6 +70,8 @@ public class MainFrame extends JFrame {
         contentPanel.add(new RegisterPaymentPanel(), "pay");
         contentPanel.add(new ExpiredPanel(), "expired");
         contentPanel.add(new DeletePanel(), "delete");
+        contentPanel.add(new DeleteReportPanel(), "reportes");
+
 
         add(contentPanel, BorderLayout.CENTER);
 
@@ -109,7 +111,8 @@ public class MainFrame extends JFrame {
         buttons.add(createNavButton("Ver multas vencidas", "/imagenes/vencidas.png", "expired"));
         buttons.add(Box.createVerticalStrut(8));
         buttons.add(createNavButton("Eliminar multas pagadas", "/imagenes/eliminar.png", "delete"));
-
+        buttons.add(Box.createVerticalStrut(8));
+        buttons.add(createNavButton("Reporte de multas eliminadas", "/imagenes/reporte_1.png", "reportes"));
         p.add(buttons, BorderLayout.CENTER);
 
         // footer
